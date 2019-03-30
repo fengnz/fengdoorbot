@@ -152,7 +152,7 @@ function setVerifyPayload(share, groupSettings, payloads) {
         askVerifyPayload.text += '如果 *';
         askVerifyPayload.text += groupSettings.notRobot.timeout;
         askVerifyPayload.text += "* 秒内你没有点击以下按钮，你将被踢出群，你可以在一分钟后重新加入, ";
-        askVerifyPayload.text += "如何无法加入请重启Telegram";
+        askVerifyPayload.text += "如果无法加入请重启Telegram";
         askVerifyPayload.text += "\n";
         askVerifyPayload.text += "注: 管理员点以下按钮也可放行";
       }
@@ -185,7 +185,11 @@ function setVerifyPayload(share, groupSettings, payloads) {
         chat: share.chat
       };
 
-      var query = { 'user.id': newMember.user.id };
+      var query = {
+         'user.id': newMember.user.id,
+         'chat.id': share.chat.id
+      };
+
       // Remove old entries of this user from db
       mongo.remove(Const.memberColl, 'filter=' + JSON.stringify(query));
       // Add this user to db
@@ -215,7 +219,7 @@ function setAskVerifyCallBackPayloads(share, askVerifyPayload, payloads, timeout
     if (res.ok) {
       var find = {
         "user.id": share.new_chat_member.id,
-        "group.id": share.chat.id,
+        "chat.id": share.chat.id,
         "status": "pending",
       };
 
