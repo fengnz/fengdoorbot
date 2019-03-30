@@ -13,9 +13,6 @@ function doPost(e) {
   };
 
   var body = JSON.parse(e.postData.contents);
-  if (body && body.message && body.message.chat && body.message.chat.username == "fengsharegroup") {
-    mongo.insert("from-telegram", body);
-  }
 
   if (body.message && body.message.chat) {
     body.message.chat.id = body.message.chat.id + '';

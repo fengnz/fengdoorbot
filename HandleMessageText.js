@@ -74,7 +74,7 @@ function handleMessageText(body) {
       return null;
     }
 
-    mongo.insert(Const.fromTelegram, body);
+    // mongo.insert(Const.fromTelegram, body);
 
     
     var origParas = origMessageText.trim().split(" ");
