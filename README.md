@@ -51,10 +51,10 @@
 
 # 关于峰哥
 
-更多峰哥的机器人
-抽奖机器人 @fengdrawbot
-关键字识别机器人 @fengfaqbot，可以删粗话，回复FAQ等
-置顶机器人 @fengpinbot, 可以同时在频道和群中工作
+##更多峰哥的机器人
+- 抽奖机器人 @fengdrawbot
+- 关键字识别机器人 @fengfaqbot，可以删粗话，回复FAQ等
+- 置顶机器人 @fengpinbot, 可以同时在频道和群中工作
 
 
 以下是峰哥的 Youtube 频道与一些信息
