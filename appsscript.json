@@ -1,0 +1,15 @@
+{
+  "timeZone": "Pacific/Auckland",
+  "dependencies": {
+    "enabledAdvancedServices": [{
+      "userSymbol": "YouTube",
+      "serviceId": "youtube",
+      "version": "v3"
+    }]
+  },
+  "webapp": {
+    "access": "ANYONE_ANONYMOUS",
+    "executeAs": "USER_DEPLOYING"
+  },
+  "exceptionLogging": "STACKDRIVER"
+}
