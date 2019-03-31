@@ -35,7 +35,8 @@
 - clasp push 推送代码到谷歌
 - clasp deploy 发布
 
-然后到 [https://script.google.com/home](https://script.google.com/home) 找到你刚刚用clasp create 创建的项目, 
+然后到 [https://script.google.com/home](https://script.google.com/home) 找到你刚刚用clasp create 创建的项目
+如果clasp create 无法创建项目的话，可以在这个网页先创建项目，然后复制Script ID, 用 clasp clone 克隆到本地，再用源码Code.js再覆盖一次默认的Code.js
 
 打住，找到项目后， 剩下的你就应该会了， 如果你还没有做过任何的 Telegram 电报聊天机器人，可以到这个Youtube 播放列表看看我的视频 
 
@@ -51,7 +52,7 @@
 
 # 关于峰哥
 
-##更多峰哥的机器人
+## 更多峰哥的机器人
 - 抽奖机器人 @fengdrawbot
 - 关键字识别机器人 @fengfaqbot，可以删粗话，回复FAQ等
 - 置顶机器人 @fengpinbot, 可以同时在频道和群中工作
