@@ -5,6 +5,7 @@
   本项目使用GNU GPL许可，任何使用本代码的作品必需使用相同的许可分发。
 # Telegram 电报聊天群管理机器人	
 最新的代码会布署到 @FengDoorBot 机器人上， 欢迎使用
+如果对本机器人有什么意见或建议，可以给我留言，也可以加入我的Telegram 电报群  https://t.me/fengsharegroup
 
 # 功能
 ## 欢迎消息
