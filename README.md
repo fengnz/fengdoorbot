@@ -31,7 +31,9 @@
 
 
 - 克隆或者下载本代码，开发者请fork, 希望大家能一起提交pull request
-- 更改 Const.js 里面的变量， 主要是你自己机器人的token
+- 更改 Const.js 里面的变量， 主要是你自己机器人的token，还有数据库的信息
+  * 需要Restheart 数据库可以和我联系
+  * 你也可以直接使用代码中填好的数据库，它是工作的，只是它是公用的
 - 安装 nodejs (npm)
 - 安装谷歌 clasp
 - clasp login 登录谷歌
