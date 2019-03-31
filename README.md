@@ -32,7 +32,8 @@
 
 - 克隆或者下载本代码，开发者请fork, 希望大家能一起提交pull request
 - 更改 Const.js 里面的变量， 主要是你自己机器人的token，还有数据库的信息
-  * 需要Restheart 数据库可以和我联系
+  * 你可以根据这个[教程](https://www.dengnz.com/2019/03/01/%E6%9C%AC%E6%9C%BA%E8%87%AA%E5%BB%BAmongo-db-restheart-%E6%9C%8D%E5%8A%A1%E5%99%A8/)自己建Restheart API和 MongoDb 数据库 
+  * 不想自建又需要Restheart 数据库可以和我联系
   * 你也可以直接使用代码中填好的数据库，它是工作的，只是它是公用的
 - 安装 nodejs (npm)
 - 安装谷歌 clasp
