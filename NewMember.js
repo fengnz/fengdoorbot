@@ -237,6 +237,14 @@ function setAskVerifyCallBackPayloads(share, askVerifyPayload, payloads, timeout
             "until_date": Date.now() / 1000 + 60,
           };
 
+          kickPayload.callback = function(res) {
+            if (res.ok) {
+              var data = { status: "kicked" };
+              var setData = { "$set": data };
+              mongo.setOne(Const.memberColl + "/" + member._id.$oid, setData);
+            }
+          };
+
 
           var deleteAskVerifyPayload = {
             "method": "deleteMessage",

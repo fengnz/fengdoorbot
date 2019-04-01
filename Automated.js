@@ -20,8 +20,12 @@ function removePendingUsers() {
                 "until_date": Date.now() / 1000 + 60,
             };
 
-            postTelegram(kickPayload);
-
+            var res = postTelegram(kickPayload);
+            if (res.ok) {
+                var data = { status: "kicked" };
+                var setData = { "$set": data };
+                mongo.setOne(Const.memberColl + "/" + member._id.$oid, setData);
+            }
         }
     }
 }
