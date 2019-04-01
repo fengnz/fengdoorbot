@@ -43,7 +43,7 @@
 - clasp deploy 发布
 
 然后到 [https://script.google.com/home](https://script.google.com/home) 找到你刚刚用clasp create 创建的项目
-如果clasp create 无法创建项目的话，可以在这个网页先创建项目，然后复制Script ID, 用 clasp clone 克隆到本地，再用源码Code.js再覆盖一次默认的Code.js
+如果clasp create 无法创建项目的话，可以在这个网页先创建项目，然后复制Script ID, 用 clasp clone 克隆到本地，再用源码Code.js再覆盖一次默认的Code.js, 再 clasp push 回去
 
 打住，找到项目后， 剩下的你就应该会了， 如果你还没有做过任何的 Telegram 电报聊天机器人，可以到这个Youtube 播放列表看看我的视频 
 
@@ -57,6 +57,8 @@
 
 然后用 /help 开始
 
+## 关于定时任务
+我在 Automated.js 里放了些可以用触发器触发的自动任务，比如定时清除过期没有验证的用户。 如果你不知道怎么设置触发器, 可以看这个[视频](https://youtu.be/7eNOPsfz4g0)
 
 
 # 如何开发 
