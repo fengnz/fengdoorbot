@@ -197,7 +197,7 @@ function setVerifyPayload(share, groupSettings, payloads) {
 
       if (
         groupSettings.notRobot.timeout > 0 &&
-        groupSettings.notRobot.timeout <=  50 * 1000
+        groupSettings.notRobot.timeout <=  50
       ) {
         setAskVerifyCallBackPayloads(share, askVerifyPayload, payloads, timeout);
       }
@@ -213,8 +213,6 @@ function setVerifyPayload(share, groupSettings, payloads) {
 function setAskVerifyCallBackPayloads(share, askVerifyPayload, payloads, timeout){
   askVerifyPayload.callback = function (res) {
     // Wait till timeout before decide to kick
-    // Note that this timeout will override the welcome message self destroy timeout
-    // The welcome message will be delete when the user is kicked
     Utilities.sleep(timeout * 1000);
     if (res.ok) {
       var find = {
