@@ -85,9 +85,11 @@ function handleAdminCommand(body, paras, origParas) {
                   }
                 } else {
                   payload.text = "进群验证倒计时设置失败";
+                  payload.text += "\n";
                 }
               } else {
                 payload.text += "倒计时只能是数字，单位为妙钟";
+                payload.text += "\n";
               }
             }
           }
@@ -131,6 +133,7 @@ function handleAdminCommand(body, paras, origParas) {
                 groupSettings.welcome[paras[2]] = value;
               } else {
                 payload.text += "设置失败";
+                payload.text += "\n";
               }   
            
             break;

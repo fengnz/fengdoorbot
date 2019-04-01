@@ -5,11 +5,6 @@ var baseUrl = "https://api.mlab.com/api/1/";
 var dbUrl = baseUrl + "databases/mongo/";
 var collectionUrl = dbUrl + "collections/";
 
-var logColl = "logs";
-var groupSettingsColl = "group-settings";
-var toTelegram = "to-telegram";
-var fromTelegram = "from-telegram";
-
 var mlab = {};
 
 if (Const.useMlab) {
@@ -22,6 +17,9 @@ function debugMLab(){
 }
 
 function convertRestHeartParasToMlabParas(query) {
+  if (!query){
+    return query;
+  }
     query = query.replace("filter=", "q=");
     query = query.replace("sort=", "s=");
     query = query.replace("pagesize=", "l=");
@@ -34,7 +32,7 @@ function convertRestHeartParasToMlabParas(query) {
 mlab.insert = function(collection, data) {
   var db = apendAPI(collectionUrl + collection);
   var option = getMlabInsertOption(data);
-  UrlFetchApp.fetch(db, option);
+  return UrlFetchApp.fetch(db, option);
 };
 
 
@@ -47,7 +45,7 @@ mlab.replace = function(collection, query, data) {
   }
   var option = getMlabPutOption(data);
   var url = encodeURI(db);
-  UrlFetchApp.fetch(url, option);
+  return UrlFetchApp.fetch(url, option);
 };
 mlab.get = function(collection, query) {
   query = convertRestHeartParasToMlabParas(query);

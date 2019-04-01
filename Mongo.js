@@ -1,8 +1,8 @@
-function debugMLab(){
+function debugMongo(){
   debug();
 }
 
-var mongo = {};
+var mongo;
 var restheart = {};
 
 function request(db, option) {
@@ -132,9 +132,11 @@ restheart.get = function(collection, query) {
     return result;
   }
   return  object;
-}
+};
 
-mongo = restheart;
+if (!Const.useMlab){
+  mongo = restheart;
+}
 
 function getInsertOption(data){
   var option = {

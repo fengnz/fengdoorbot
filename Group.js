@@ -28,7 +28,10 @@ function gpSetFieldValue(group, field, value) {
     if (!groupSettings._id) {
       mongo.insert(Const.groupSettingsColl, groupSettings);
     }
-    var res = mongo.setOne(Const.groupSettingsColl + "/" + groupSettings._id.$oid, data);
+    
+    var setData = {"$set": data};
+    
+    var res = mongo.setOne(Const.groupSettingsColl + "/" + groupSettings._id.$oid, setData);
     if (res.getResponseCode() != 200) {
       console.log(res.getContentText());
     }

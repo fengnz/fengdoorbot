@@ -146,6 +146,7 @@ function handleMessageText(body) {
           payload.text = "设置成功";
         } else {
           payload.text = "设置失败";
+          payload.text += "\n";
         }
         return payload;
       }

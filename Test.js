@@ -4,7 +4,7 @@ var testObject = {
    chat_id: -1001226042286,
    new_chat_member_id: 605149962,
    callback_query_id: "2315267451523235823",
-   text: "/admin",
+   text: "/admin welcome status on",
    data: "notRobot:605149962",
 };
 
@@ -27,7 +27,7 @@ function debug() {
    var e = {};
    e.postData = {};
 
-   e.postData.contents = testNewMember;
+   e.postData.contents = testGroupAdmin;
    doPost(e);
 
 }

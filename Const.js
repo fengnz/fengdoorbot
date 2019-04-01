@@ -1,5 +1,10 @@
-//改成你自己的机器人 Token
 var Const = {};
+// 如果你用的是 mlab 数据库， 改成 true
+Const.useMlab = false;
+//改成你自己的机器人 Token
+//Live
+// Const.botToken = "机器人ID";
+//Debug
 Const.botToken = "机器人ID";
 Const.myId = parseInt(Const.botToken.split(":")[0]);
 Const.myName = "机器人的username";
