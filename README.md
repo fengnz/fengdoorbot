@@ -6,6 +6,7 @@
 # Telegram 电报聊天群管理机器人	
 最新的代码会布署到 @FengDoorBot 机器人上， 欢迎使用
 如果对本机器人有什么意见或建议，可以给我留言，也可以加入我的Telegram 电报群  https://t.me/fengsharegroup
+想学习怎么开发机器人的，请看我的Youtube发的视频[教程](https://www.dengnz.com/2019/03/01/%E6%9C%AC%E6%9C%BA%E8%87%AA%E5%BB%BAmongo-db-restheart-%E6%9C%8D%E5%8A%A1%E5%99%A8/)
 
 # 功能
 ## 欢迎消息
