@@ -1,8 +1,10 @@
-A='Created version 57.'
-A='[2K[1G| Creating a new version...[2K[1G/ Creating a new version...[2K[1G- Creating a new version...[2K[1G\ Creating a new version...[2K[1G| Creating a new version...[2K[1G/ Creating a new version...[2K[1G- Creating a new version...[2K[1G\ Creating a new version...[2K[1G| Creating a new version...[2K[1G/ Creating a new version...[2K[1G- Creating a new version...[2K[1G\ Creating a new version...[2K[1G| Creating a new version...[2K[1G/ Creating a new version...[2K[1G- Creating a new version...[2K[1G\ Creating a new version...[2K[1G| Creating a new version...[2K[1G/ Creating a new version...[2K[1G- Creating a new version...[2K[1G\ Creating a new version...[2K[1G| Creating a new version...[2K[1G/ Creating a new version...[2K[1GCreated version 62.'
+# 如果你要使用这个自动布署, 在git bash 里使用 ./run.sh
+# deployId 改成你自己布署清单里的某个布署的ID， 这个布署的URL应该是和你的测试机器人绑定的
+# 你也可以布署到你的LIVE机器人deploy id, 但不建议这么做
+# 注意，如果你的机器人绑定的URL是Head Deployment 的URL，将无法使用以下代码
+deployId=AKfycbw2wUrlpt9qZbLRpO6v8cdGT3BbAB9in3zmIcyfvwJSYxKYhoAWhms82LyP2gFKWvVU 
 clasp push
-A=`clasp version`
-B=`echo $A | cut -d 'd' -f2 | cut -d ' ' -f3 | cut -d '.' -f1` 
-echo $B
-clasp redeploy AKfycbyHpy7In1NHTbDQLg4jkG4PaijeXjQcXxLyzs0oUnD8GupKI9AGWdljpVdqPxs_Ax8WbA $B "Debug"
-
+# A=`clasp version debug`
+# version=`echo $A | cut -d 'd' -f2 | cut -d ' ' -f3 | cut -d '.' -f1` 
+# echo $B
+clasp deploy --deploymentId $deployId 
