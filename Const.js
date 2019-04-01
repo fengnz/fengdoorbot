@@ -8,6 +8,7 @@ Const.useMlab = false;
 Const.botToken = "机器人ID";
 Const.myId = parseInt(Const.botToken.split(":")[0]);
 Const.myName = "机器人的username";
+Const.myName = Const.myName.toLowerCase();
 
 //以下是峰哥的数据库服务器，可以工作，可以用，没有数据库的可以保留
 Const.restheartUrl = "https://restheart.dengnz.com/user2/";
