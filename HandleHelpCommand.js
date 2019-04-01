@@ -9,7 +9,7 @@ function handleHelpCommand(body, paras, origParas) {
     "parse_mode": "markdown",
     "disable_web_page_preview": true,	
   };
-      payload.text += "欢迎使用本机器人！！\n\n";
+      payload.text += "欢迎使用群管机器人！！\n\n";
       payload.text += "以下是本BOT的独家命令："
         + "\n\n"
         + "/help - 输出帮助" + "\n"
