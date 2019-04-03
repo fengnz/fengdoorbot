@@ -77,9 +77,7 @@ function handleAdminCommand(body, paras, origParas) {
                   payload.text += timeout;
                   groupSettings.notRobot.timeout = timeout;
                   payload.text += "\n";
-                  if (timeout > 50) {
-                    payload.text += "注意，超过50秒的倒计时需要在谷歌GAS设置触发器调用 removePendingUsers() 函数, 如果无法自动踢人请联系机器人服务器架设者";
-                  }
+                  payload.text += "注意，倒计时踢人需要在谷歌GAS设置触发器调用 removePendingUsers() 函数, 如果无法自动踢人请联系机器人服务器架设者";
                   if (timeout == 0) {
                     payload.text += "倒计时设置为0时，将不会自动踢除未验证的用户";
                   }
@@ -103,8 +101,7 @@ function handleAdminCommand(body, paras, origParas) {
           payload.text += "\n";
           payload.text += "超过这个时间还没验证的用户会被踢出群. 设置成0则不踢";
           payload.text += "\n";
-          payload.text += "注意！ 这个设置只对50秒以下的倒计时有效，超过这个时间, 你可以设置，但需要使用触发器定期踢出未验证的用户";
-          //原因是超过1分钟后Telegram会一直重试，而GAS不支持异步
+          payload.text += "注意！ 需要在谷歌脚本使用触发器定期踢出未验证的用户";
           payload.text += "\n";
         }
 
@@ -305,20 +302,28 @@ function setButtonsForAdminNotRobot(payload, groupSettings) {
         }
       );
     }
-    if (groupSettings.notRobot.timeout !== 30) {
+    if (groupSettings.notRobot.timeout !== 120) {
       buttons.push(
         {
-          text: "踢出倒计时【" + 30 + "秒】",
-          callback_data: "admin:notrobot:timeout:" + 30,
+          text: "踢出倒计时【" + 120 + "秒】",
+          callback_data: "admin:notrobot:timeout:" + 120,
         }
       );
     }
 
-    if (groupSettings.notRobot.timeout !== 50) {
+    if (groupSettings.notRobot.timeout !== 3600) {
       buttons.push(
         {
-          text: "踢出倒计时【" + 50 + "秒】",
-          callback_data: "admin:notrobot:timeout:" + 50,
+          text: "踢出倒计时【" + 1 + "小时】",
+          callback_data: "admin:notrobot:timeout:" + 3600,
+        }
+      );
+    }
+    if (groupSettings.notRobot.timeout !== 3600 * 24) {
+      buttons.push(
+        {
+          text: "踢出倒计时【" + 1 + "天】",
+          callback_data: "admin:notrobot:timeout:" + 3600 * 24,
         }
       );
     }

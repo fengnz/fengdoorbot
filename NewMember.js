@@ -171,7 +171,7 @@ function setVerifyPayload(share, groupSettings, payloads) {
 
       // Add this guy to pending list
 
-      var timeout = 30;
+      var timeout = 120;
 
       if (groupSettings.notRobot && groupSettings.notRobot.timeout) {
         timeout = groupSettings.notRobot.timeout;
@@ -195,12 +195,14 @@ function setVerifyPayload(share, groupSettings, payloads) {
       // Add this user to db
       mongo.insert(Const.memberColl, newMember);
 
-      if (
-        groupSettings.notRobot.timeout > 0 &&
-        groupSettings.notRobot.timeout <=  50
-      ) {
-        setAskVerifyCallBackPayloads(share, askVerifyPayload, payloads, timeout);
-      }
+      // 由于谷歌代码无法异步，而Telegram对同一个用户的消息，发送给webhook的请求也是排队的(上一个请求返回后才会发下一个请求)
+      // 所以造成进群的用户自己无法点击验证按钮，所以所有踢人的功能请在谷歌脚本去设置触发器来完成
+      // if (
+      //   groupSettings.notRobot.timeout > 0 &&
+      //   groupSettings.notRobot.timeout <=  50
+      // ) {
+      //   setAskVerifyCallBackPayloads(share, askVerifyPayload, payloads, timeout);
+      // }
 
       //make sure askVerifyPayload is the last one pushed.
       payloads.push(askVerifyPayload);

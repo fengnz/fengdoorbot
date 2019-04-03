@@ -14,7 +14,7 @@ var defaultWelcome = {
 
 var defaultNotRobot = {
   status: "on",
-  timeout: 30
+  timeout: 0
 };
 
 
