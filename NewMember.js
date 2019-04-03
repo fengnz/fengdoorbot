@@ -177,32 +177,8 @@ function setVerifyPayload(share, groupSettings, payloads) {
         timeout = groupSettings.notRobot.timeout;
       }
 
-      var newMember = {
-        status: 'pending',
-        date: parseInt(Date.now() / 1000),
-        timeout: timeout,
-        user: share.new_chat_member,
-        chat: share.chat
-      };
 
-      var query = {
-         'user.id': newMember.user.id,
-         'chat.id': share.chat.id
-      };
-
-      // Remove old entries of this user from db
-      mongo.remove(Const.memberColl, 'filter=' + JSON.stringify(query));
-      // Add this user to db
-      mongo.insert(Const.memberColl, newMember);
-
-      // 由于谷歌代码无法异步，而Telegram对同一个用户的消息，发送给webhook的请求也是排队的(上一个请求返回后才会发下一个请求)
-      // 所以造成进群的用户自己无法点击验证按钮，所以所有踢人的功能请在谷歌脚本去设置触发器来完成
-      // if (
-      //   groupSettings.notRobot.timeout > 0 &&
-      //   groupSettings.notRobot.timeout <=  50
-      // ) {
-      //   setAskVerifyCallBackPayloads(share, askVerifyPayload, payloads, timeout);
-      // }
+      setAskVerifyCallBackPayloads(share, askVerifyPayload, payloads, timeout);
 
       //make sure askVerifyPayload is the last one pushed.
       payloads.push(askVerifyPayload);
@@ -214,51 +190,25 @@ function setVerifyPayload(share, groupSettings, payloads) {
 
 function setAskVerifyCallBackPayloads(share, askVerifyPayload, payloads, timeout){
   askVerifyPayload.callback = function (res) {
-    // Wait till timeout before decide to kick
-    Utilities.sleep(timeout * 1000);
     if (res.ok) {
-      var find = {
-        "user.id": share.new_chat_member.id,
-        "chat.id": share.chat.id,
-        "status": "pending",
+      var newMember = {
+        status: 'pending',
+        date: parseInt(Date.now() / 1000),
+        timeout: timeout,
+        user: share.new_chat_member,
+        chat: share.chat,
+        message: res.result,
       };
 
-      var findString = JSON.stringify(find);
-      var members = mongo.get(Const.memberColl, "filter=" + findString);
-      if (members.length > 0) {
-        var member = members[0];
+      var query = {
+         'user.id': newMember.user.id,
+         'chat.id': share.chat.id
+      };
 
-        //based on the gap between now and member join date, we decided whether need to add the kick payload
-        var pending_time = Date.now() / 1000 - member.date;
-        if (pending_time > member.timeout && member.timeout != 0) {
-          // The user will be kicked and ban for 1 minute
-          var kickPayload = {
-            "method": "kickChatMember",
-            "chat_id": member.chat.id,
-            "user_id": member.user.id,
-            "until_date": Date.now() / 1000 + 60,
-          };
-
-          kickPayload.callback = function(res) {
-            if (res.ok) {
-              var data = { status: "kicked" };
-              var setData = { "$set": data };
-              mongo.setOne(Const.memberColl + "/" + member._id.$oid, setData);
-            }
-          };
-
-
-          var deleteAskVerifyPayload = {
-            "method": "deleteMessage",
-            "message_id": res.result.message_id,
-            "chat_id": share.chat.id,
-          };
-
-          // Add kick and delete payload, which will be sent after deleting welcome message (if has)
-          payloads.push(kickPayload);
-          payloads.push(deleteAskVerifyPayload);
-        }
-      }
+      // Remove old entries of this user from db
+      mongo.remove(Const.memberColl, 'filter=' + JSON.stringify(query));
+      // Add this user to db
+      mongo.insert(Const.memberColl, newMember);
     }
   };
 }
