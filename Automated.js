@@ -25,6 +25,16 @@ function removePendingUsers() {
                 var data = { status: "kicked" };
                 var setData = { "$set": data };
                 mongo.setOne(Const.memberColl + "/" + member._id.$oid, setData);
+
+                if (member.message) {
+                    var deleteAskVerifyPayload = {
+                        "method": "deleteMessage",
+                        "message_id": member.message.message_id,
+                        "chat_id": member.chat.id,
+                    };
+                    postTelegram(deleteAskVerifyPayload);
+                }
+
             }
         }
     }
