@@ -27,7 +27,7 @@ function debug() {
    var e = {};
    e.postData = {};
 
-   e.postData.contents = testGroupAdmin;
+   e.postData.contents = testNewMember;
    doPost(e);
 
 }

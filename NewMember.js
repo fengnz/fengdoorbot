@@ -183,6 +183,10 @@ function setVerifyPayload(share, groupSettings, payloads) {
       //make sure askVerifyPayload is the last one pushed.
       payloads.push(askVerifyPayload);
 
+    } else {
+      var payload = share.payload;
+      payload.text += "本机器人打开了进群验证功能，但是没有管理员权限，无法禁用用户\n";
+      payloads.push(payload);
     }
   }
 }

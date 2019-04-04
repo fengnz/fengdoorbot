@@ -13,7 +13,7 @@ var defaultWelcome = {
 };
 
 var defaultNotRobot = {
-  status: "on",
+  status: "off",
   timeout: 0
 };
 
@@ -58,6 +58,7 @@ function getGroupSettings(group)
     groupSettings.group= group;
     groupSettings.welcome = defaultWelcome;
     groupSettings.notRobot = defaultNotRobot;
+    mongo.insert(Const.groupSettingsColl, groupSettings);
   }
 
   return groupSettings;
