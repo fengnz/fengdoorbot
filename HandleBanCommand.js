@@ -16,39 +16,49 @@ function handleBanCommand(body, paras, origParas) {
     return payload; 
   }
 
-  var targetUser = origParas[1];
+  var targetUser;
 
-  var isAdmin = isAdminOrCreator(share.from.id, share.chat.id);
+  var theUser;
 
-  if (isAdmin) {
-    var payload2 = {
-      "method": "restrictChatMember",
-      "chat_id": share.chat.id,
-      "user_id": targetUser,
-      "can_send_messages": false,
-      "can_send_media_messages": false,
-      "can_send_other_messages": false,
-      "can_add_web_page_previews": false,
-    };
-    var payload4 = {
-      "method": "kickChatMember",
-      "chat_id": share.chat.id,
-      "user_id": targetUser,
-    };
-    payloads.push(payload4);
-
+  if (origParas.length > 1) {
+    targetUser = origParas[1];
   } else {
-    if (body.callback_query) {
-      var answerCallBackQueryPayload = {
-        "method": "answerCallbackQuery",
-        "callback_query_id": callback_query_id,
-        "text": "只有本群管理才可以使用此命令",
-      };
-      return answerCallBackQueryPayload;
-    } else {
-      payload.text += "只有本群管理才可以使用此命令";
-      return payload;
+    if (body.message && body.message.reply_to_message) {
+      targetUser = body.message.reply_to_message.from.id;
+      theUser = body.message.reply_to_message.from;
     }
   }
+
+  if (targetUser) {
+    var isAdmin = isAdminOrCreator(share.from.id, share.chat.id);
+    if (isAdmin) {
+      var payload4 = {
+        "method": "kickChatMember",
+        "chat_id": share.chat.id,
+        "user_id": targetUser,
+      };
+      payloads.push(payload4);
+
+      if (theUser) {
+        payload.text += getMentionName(share.from);
+        payload.text += "踢了";
+        payload.text += getMentionName(theUser);
+        payloads.push(payload);
+      }
+    } else {
+      if (body.callback_query) {
+        var answerCallBackQueryPayload = {
+          "method": "answerCallbackQuery",
+          "callback_query_id": callback_query_id,
+          "text": "只有本群管理才可以使用此命令",
+        };
+        return answerCallBackQueryPayload;
+      } else {
+        payload.text += "只有本群管理才可以使用此命令";
+        return payload;
+      }
+    }
+  }
+
   return payloads;
 }

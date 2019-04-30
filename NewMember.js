@@ -69,7 +69,9 @@ function setWelcomePayload(share, groupSettings, payloads) {
           text = text.replace(/\$\(desc\)/g, "");
         }
         if (chat.pinned_message) {
-          text = text.replace(/\$\(pinnedMessage\)/gi, escapeMarkDown(chat.pinned_message.text));
+          if (chat.pinned_message.text) {
+            text = text.replace(/\$\(pinnedMessage\)/gi, escapeMarkDown(chat.pinned_message.text));
+          }
           text = text.replace(/\$\(pinnedId\)/gi, chat.pinned_message.message_id);
           if (chat.username) {
             text = text.replace(/\$\(pinnedUrl\)/gi, getMessageUrl(chat.pinned_message.message_id, chat.username));

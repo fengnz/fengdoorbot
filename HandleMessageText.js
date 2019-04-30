@@ -52,6 +52,7 @@ function handleMessageText(body) {
       "/start",
       "/initdb",
       "/delmsg",
+      "/ban",
     ];
 
     var paras = messageText.trim().split(" ");

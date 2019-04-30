@@ -11,6 +11,7 @@ var testObject = {
 var testNewMember = getNewMemberJoinJson(testObject);
 var testGroupAdmin = getTextMessageJson(testObject);
 var testCallback = getCallbackJson(testObject);
+var testReply = getReplyTextMessageJson(testObject);
 
 
 function debug() {
@@ -27,7 +28,7 @@ function debug() {
    var e = {};
    e.postData = {};
 
-   e.postData.contents = testNewMember;
+   e.postData.contents = testReply;
    doPost(e);
 
 }

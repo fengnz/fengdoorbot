@@ -52,6 +52,57 @@ function getNewMemberJoinJson (testObject) {
 
 }
 
+function getReplyTextMessageJson (testObject) {
+    var json = {
+        "update_id": 943707030,
+        "message": {
+          "message_id": 5487,
+          "from": {
+            "id": 539065210,
+            "is_bot": false,
+            "first_name": "Yufeng Deng",
+            "last_name": "峰哥",
+            "username": "fennng",
+            "language_code": "en"
+          },
+          "chat": {
+            "id": "-1001226042286",
+            "title": "机器人测试",
+            "username": "botTestingGroup1",
+            "type": "supergroup"
+          },
+          "date": 1556633609,
+          "reply_to_message": {
+            "message_id": 5481,
+            "from": {
+              "id": 646807833,
+              "is_bot": true,
+              "first_name": "YoutubeChannels",
+              "username": "YoutubeChannelsBot"
+            },
+            "chat": {
+              "id": -1001226042286,
+              "title": "机器人测试",
+              "username": "botTestingGroup1",
+              "type": "supergroup"
+            },
+            "date": 1556631162,
+            "text": "欢迎来到机器人设置有什么我可以帮您的吗？"
+          },
+          "text": "/ban",
+          "entities": [
+            {
+              "offset": 0,
+              "length": 6,
+              "type": "bot_command"
+            }
+          ]
+        }
+      };
+    
+    return JSON.stringify(json);
+
+}
 function getTextMessageJson (testObject) {
     var json = {
         "update_id": 220377809,

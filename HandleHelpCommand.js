@@ -14,6 +14,7 @@ function handleHelpCommand(body, paras, origParas) {
         + "\n\n"
         + "/help - 输出帮助" + "\n"
         + "/admin - 机器人设置" + "\n"
+        + "/ban - 用此命令回复消息踢发消息的人" + "\n"
         + "\n"
         ;
 
