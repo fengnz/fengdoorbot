@@ -35,7 +35,18 @@ function removePendingUsers() {
                     postTelegram(deleteAskVerifyPayload);
                 }
 
+            } else {
+              var data = { status: "error" };
+              
+              if (res.description) {
+                data.error_description = res.description;
+              }
+              
+                var setData = { "$set": data };
+                mongo.setOne(Const.memberColl + "/" + member._id.$oid, setData);                
             }
+          
+          
         }
     }
 }

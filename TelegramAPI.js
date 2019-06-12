@@ -10,6 +10,7 @@ function postTelegram(payload) {
   var data = {
     'contentType': 'application/json',
     "method": "post",
+    "muteHttpExceptions": true,
     "payload": JSON.stringify(payload)
   };
 
