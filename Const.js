@@ -22,3 +22,6 @@ Const.logColl = "logs";
 Const.groupSettingsColl = "group-settings";
 Const.toTelegram = "to-telegram";
 Const.fromTelegram = "from-telegram";
+
+Const.channelId = "@fengshare";
+Const.myAtName = "@" + Const.myName;

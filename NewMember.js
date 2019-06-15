@@ -15,6 +15,26 @@ function handleNewMember(body) {
     setWelcomePayload(share, groupSettings, payloads);
   }
 
+  if (body.message.new_chat_member.id == Const.myId) {
+    var payload2 = {
+      "method": "sendMessage",
+      "chat_id": "@fengshare",
+      "text": "",
+      "parse_mode": "markdown",
+      "disable_web_page_preview": true,
+    };
+    var mentionName = getMentionName(body.message.new_chat_member);
+    var invitorName = getMentionName(body.message.from);
+    payload2.text += invitorName + "把" + mentionName + "加到了" + getGroupName(share.chat) + "中";
+    payload2.text += "\n";
+    payload2.text += "-- 来自 " + escapeMarkDown(Const.myAtName) + " 的消息\n";
+    payload2.text += "\n";
+
+    payload2.chat_id = Const.channelId;
+    payloads.push(payload2);
+  }
+
+
   return payloads;
 }
 
