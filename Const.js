@@ -11,9 +11,9 @@ Const.myName = "机器人的username";
 Const.myName = Const.myName.toLowerCase();
 
 //以下是峰哥的数据库服务器，可以工作，可以用，没有数据库的可以保留
-Const.restheartUrl = "https://restheart.dengnz.com/user2/";
+Const.restheartUrl = "https://r1.dengnz.com/user2/";
 Const.restheartUser = "user2";
-Const.restheartPass = "changeit";
+Const.restheartPass = "jrCtNft6TbMYZxWe";
 
 
 Const.memberColl = "members";
