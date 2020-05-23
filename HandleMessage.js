@@ -13,7 +13,7 @@ function handleMessage(body){
   };
 
   if (body.message.new_chat_member) {
-    mongo.insert(Const.fromTelegram, body);
+    // mongo.insert(Const.fromTelegram, body);
     payload = handleNewMember(body);
     return payload;
   }

@@ -14,13 +14,13 @@ function postTelegram(payload) {
     "payload": JSON.stringify(payload)
   };
 
-  mongo.insert(Const.toTelegram, payload);
+  // mongo.insert(Const.toTelegram, payload);
   var response;
   var res;
   try {
     response = UrlFetchApp.fetch("https://api.telegram.org/bot" + Const.botToken + "/", data);
     res = JSON.parse(response);
-    mongo.insert("telegram-response", res);
+    // mongo.insert("telegram-response", res);
     return res;
   } catch (e) {
     var errorLog = {
